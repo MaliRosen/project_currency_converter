@@ -42,6 +42,7 @@ export const getAmountError = (value) => {
 
 export class CurrencyForm extends React.Component {
   static displayName = "CurrencyForm";
+ 
   state = {
     amount: {
       value: "1",
@@ -51,7 +52,7 @@ export class CurrencyForm extends React.Component {
     to: undefined,
     resultValue: undefined,
   };
-
+  
   handleAmountChange = (event) => {
     const { value } = event.target;
     const error = getAmountError(value);
@@ -70,17 +71,24 @@ export class CurrencyForm extends React.Component {
     const { from, to } = this.state;
     this.setState({ from: to, to: from });
   };
-
+  
   handleSubmit = (event) => {
     event.preventDefault();
     const { base, rates } = this.props;
     const { amount, from, to } = this.state;
     const newValue = convertAmount(base, rates, amount, from?.label, to?.label);
     this.setState({ resultValue: newValue });
+
+
+    localStorage.setItem("obj",JSON.stringify( {newValue: newValue, to:to.label,from:from.label, amount:amount.value}));
+
   };
+  
+
 
   render() {
     const { amount, from, to, resultValue } = this.state;
+   
     const { value: amountValue, error } = amount;
     const { rates } = this.props;
 

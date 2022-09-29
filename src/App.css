@@ -1,11 +1,11 @@
 html {
   /* colors */
   --primary: #362d6b;
-  --secondary: darkslategray;
-  --background: #faf5c4;
+  --secondary: #2f4f4f;
+  --background: ;
   --border: black;
   --light-border: #cccccc;
-  --selected: gold;
+  --selected: grey;
   --error: red;
   --font-color: black;
 }
